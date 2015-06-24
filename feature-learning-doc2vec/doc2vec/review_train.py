@@ -1,4 +1,4 @@
-from gensim_infer_vector.gensim.models.doc2vec import Doc2Vec, LabeledSentence
+from gensim_infer_vector_cp.gensim.models.doc2vec import Doc2Vec, LabeledSentence
 from numpy.random import shuffle
 
 class ReviewLineSentence(object):
