@@ -52,6 +52,6 @@ for epoch_count in range(epochs):
     model.train(sentences)
     print "Current learning rate %f" % model.alpha
 
-print "Done. Saving model to %s containing %d vocabularies" % outModelName, len(model.vocab)
+print "Done. Saving model to %s containing %d vocabularies" % (outModelName, len(model.vocab))
 
 model.save(outModelName)
