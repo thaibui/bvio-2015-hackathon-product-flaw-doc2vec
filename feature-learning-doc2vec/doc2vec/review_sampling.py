@@ -1,6 +1,6 @@
 import random
 
-inFile = "../data/review/review-sample-extracted.csv"
+inFile = "../data/review/review-sample-extracted.tsv"
 outFile = "../data/review/dict_subsampled.txt"
 samplingPercentage = 10
 outFile = open('../data/review/dict_subsampled.txt', 'w')
