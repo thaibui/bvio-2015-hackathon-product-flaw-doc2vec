@@ -1,7 +1,7 @@
-from gensim.models.doc2vec import Doc2Vec, infer_vector_dm
+from gensim_infer_vector.gensim.models.doc2vec import Doc2Vec, infer_vector_dm
 
 inModelName = "../model/review.doc2vec"
-epochs = 20
+epochs = 40
 
 model = Doc2Vec.load(inModelName)
 

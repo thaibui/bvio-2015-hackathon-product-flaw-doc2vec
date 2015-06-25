@@ -17,7 +17,7 @@ class ReviewLineSentence(object):
                     r = w.lower()
                     t = ''
                     for c in r:
-                        if c != "." and c != "," and c != "!":
+                        if c != "." and c != "," and c != "!" and c != "\"":
                             t += c
                     words.append(t)
 
@@ -32,13 +32,15 @@ class ReviewLineSentence(object):
         shuffle(self.lines)
 
 #fileName = "../data/stanfordSentimentTreebank/dictionary.txt"
-fileName = "../data/review/dict_subsampled.txt"
-outModelName = "../model/review.doc2vec"
-epochs = 10
+fileName = "../data/review/dict_subsampled_20k-4.txt"
+# fileName = "../data/review/review-sample-extracted.tsv"
+# outModelName = "../model/review.doc2vec"
+outModelName = "../model/20k-4_500_40_dbow_negative15_window16.doc2vec"
+epochs = 40
 alpha=0.025
 
 sentences = ReviewLineSentence(fileName)
-model = Doc2Vec(workers=8, size=100, alpha=alpha)
+model = Doc2Vec(workers=8, size=500, alpha=alpha, dm=0, negative=15, window=16)
 
 print "Begin building the vocabulary on %s" % fileName
 
@@ -46,7 +48,7 @@ model.build_vocab(sentences)
 
 for epoch_count in range(epochs):
     print "Training epoch #%d " % epoch_count
-    # sentences.shuffle()
+    sentences.shuffle()
     model.alpha -= (alpha/epochs)
     model.min_alpha = model.alpha
     model.train(sentences)
