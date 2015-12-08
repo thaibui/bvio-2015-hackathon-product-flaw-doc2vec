@@ -53,7 +53,7 @@ for row in trainingData.data:
 
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(vectors, labels, test_size=0.2, random_state=0)
 
-svmClassifier = joblib.load("../classifier/svm.classifier")
+svm = joblib.load("../classifier/svm.classifier")
 lg = joblib.load("../classifier/lg.classifier")
 gnb = joblib.load("../classifier/naive_bayes.classifier")
 
@@ -65,7 +65,7 @@ for w1 in range(1, 4):
             if len(set((w1, w2, w3))) == 1:
                 continue
 
-            eclf = EnsembleClassifier(clfs=[svmClassifier, lg, gnb], voting='soft', weights=[w1, w2, w3])
+            eclf = EnsembleClassifier(clfs=[svm, lg, gnb], voting='soft', weights=[w1, w2, w3])
             scores = cross_validation.cross_val_score(
                 estimator=eclf,
                 X=X_test,

@@ -31,7 +31,7 @@ class VectorizedData(object):
     def shuffle(self):
         shuffle(self.data)
 
-inTrainingData = "../data/review/dict_subsampled_20k-4.txt"
+inTrainingData = "../data/review/dict_subsampled_400k-1.txt"
 inModelName = "../model/20k-4_500_40_dbow_negative15_window16.doc2vec"
 
 # Load the model
@@ -52,13 +52,13 @@ for row in trainingData.data:
 
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(vectors, labels, test_size=0.2, random_state=0)
 
-svmClassifier = joblib.load("../classifier/svm.classifier")
+svm = joblib.load("../classifier/svm.classifier")
 lg = joblib.load("../classifier/lg.classifier")
 gnb = joblib.load("../classifier/naive_bayes.classifier")
 
-eclf = EnsembleClassifier(clfs=[svmClassifier, lg, gnb], voting='hard', weights=[1, 3, 2])
+eclf = EnsembleClassifier(clfs=[svm, lg, gnb], voting='soft')
 
-for clf, label in zip([svmClassifier, lg, gnb, eclf], ['SVM', 'Logistic Regression', 'Naive Bayes', 'Ensemble']):
+for clf, label in zip([svm, lg, gnb, eclf], ['SVM', 'Logistic Regression', 'Naive Bayes', 'Ensemble']):
 
     scores = cross_validation.cross_val_score(clf, X_test, y_test, cv=5, scoring='accuracy')
     print("Accuracy: %0.2f (+/- %0.2f) [%s]" % (scores.mean(), scores.std(), label))

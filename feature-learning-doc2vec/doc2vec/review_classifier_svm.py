@@ -31,8 +31,11 @@ class VectorizedData(object):
     def shuffle(self):
         shuffle(self.data)
 
-inTrainingData = "../data/review/dict_subsampled_20k-1.txt"
-inModelName = "../model/20k-1_500_40_dbow_negative15_window16.doc2vec"
+#inTrainingData = "../data/review/dict_subsampled_80k-0.txt"
+inTrainingData = "../data/review/review-extracted.tsv"
+# inModelName = "../model/20k-2_500_40_dbow_negative15_window16.doc2vec"
+inModelName = "../model/review-extracted_20k-4_500_40_dbow_negative15_window16.doc2vec"
+
 
 # Load the model
 model = Doc2Vec.load(inModelName)
@@ -63,4 +66,4 @@ print "Mean accuracy %f " % classifier.score(X_test, y_test)
 print "F1-score: "
 print classification_report(y_test, classifier.predict(X_test))
 
-joblib.dump(classifier, "../classifier/svm.classifier")
+joblib.dump(classifier, "../classifier/svm.review-extracted.classifier")

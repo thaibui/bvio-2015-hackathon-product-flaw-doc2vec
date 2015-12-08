@@ -32,10 +32,10 @@ class ReviewLineSentence(object):
         shuffle(self.lines)
 
 #fileName = "../data/stanfordSentimentTreebank/dictionary.txt"
-fileName = "../data/review/dict_subsampled_20k-4.txt"
-# fileName = "../data/review/review-sample-extracted.tsv"
-# outModelName = "../model/review.doc2vec"
-outModelName = "../model/20k-4_500_40_dbow_negative15_window16.doc2vec"
+# fileName = "../data/review/dict_subsampled_20k-4.txt"
+fileName = "../data/review/review-extracted.tsv"
+outModelName = "../model/review-extracted_20k-4_500_40_dbow_negative15_window16.doc2vec"
+# outModelName = "../model/20k-4_500_40_dbow_negative15_window16.doc2vec"
 epochs = 40
 alpha=0.025
 

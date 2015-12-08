@@ -2,7 +2,6 @@ boto==2.38.0
 botocore==1.1.8
 bz2file==0.98
 colorama==0.3.3
-deepdist==0.1
 docutils==0.12
 gensim==0.10.3
 jmespath==0.7.1

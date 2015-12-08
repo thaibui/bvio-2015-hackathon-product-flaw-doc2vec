@@ -31,8 +31,10 @@ class VectorizedData(object):
     def shuffle(self):
         shuffle(self.data)
 
-inTrainingData = "../data/review/dict_subsampled_20k-3.txt"
-inModelName = "../model/20k-3_500_40_dbow_negative15_window16.doc2vec"
+# inTrainingData = "../data/review/dict_subsampled_40k-0.txt"
+inTrainingData = "../data/review/dict_subsampled_400k-0.txt"
+# inModelName = "../model/20k-2_500_40_dbow_negative15_window16.doc2vec"
+inModelName = "../model/review-extracted_20k-4_500_40_dbow_negative15_window16.doc2vec"
 
 # Load the model
 model = Doc2Vec.load(inModelName)
