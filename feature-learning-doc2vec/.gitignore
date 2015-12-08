@@ -1,0 +1,5 @@
+model/*
+*.tar.gz
+data/*
+classifier
+reviews
